@@ -1,0 +1,10 @@
+language: java
+script: mvn install -Popenshift
+deploy:
+  provider: openshift
+  user: "anthoni.lawrance.arokiyasamy@gmail.com"
+  password: "lawrance@123" # can be encrypted
+  domain: "anthoni"
+  app: "MVC"
+  skip_cleanup: true
+  #deployment_branch: "vztest"
