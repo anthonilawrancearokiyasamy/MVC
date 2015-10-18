@@ -1,5 +1,5 @@
 language: java
-script: mvn install -Popenshift
+script: ant install -Popenshift
 deploy:
   provider: openshift
   user: "anthoni.lawrance.arokiyasamy@gmail.com"
@@ -7,4 +7,4 @@ deploy:
   domain: "anthoni"
   app: "MVC"
   skip_cleanup: true
-  #deployment_branch: "vztest"
+  #deployment_branch: "MVC"
