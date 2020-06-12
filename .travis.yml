@@ -1,10 +1,21 @@
-language: java
-script: ant install -Popenshift
-deploy:
-  provider: openshift
-  user: "anthoni.lawrance.arokiyasamy@gmail.com"
-  password: "lawrance@123" # can be encrypted
-  domain: "anthoni"
-  app: "MVC"
-  skip_cleanup: true
-  #deployment_branch: "MVC"
+version: '1.0'
+steps:
+  clone:
+    title: Cloning repository
+    type: git-clone
+    repo: anthonilawrancearokiyasamy/MVC
+    revision: '${{CF_BRANCH}}'
+    git: github
+    stage: clone
+  test:
+    title: Running test
+    type: freestyle
+    image: 'ubuntu:latest'
+    working_directory: '${{clone}}'
+    commands:
+      - ls
+    stage: test
+stages:
+  - clone
+  - build
+  - test
