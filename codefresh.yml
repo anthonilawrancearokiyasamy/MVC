@@ -1,0 +1,21 @@
+version: '1.0'
+steps:
+  clone:
+    title: Cloning repository
+    type: git-clone
+    repo: anthonilawrancearokiyasamy/MVC
+    revision: '${{CF_BRANCH}}'
+    git: github
+    stage: clone
+  test:
+    title: Running test
+    type: freestyle
+    image: 'ubuntu:latest'
+    working_directory: '${{clone}}'
+    commands:
+      - ls
+    stage: test
+stages:
+  - clone
+  - build
+  - test
